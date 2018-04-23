@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7da06564-b2d0-41e9-841e-5f95b90cb54b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/test/CircleTest.java" afterPath="$PROJECT_DIR$/src/main/java/test/CircleTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -61,11 +62,11 @@
       <file leaf-file-name="CircleTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/test/CircleTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+            <state relative-caret-position="171">
+              <caret line="9" column="35" lean-forward="false" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
               <folding>
                 <element signature="e#176#177#0" expanded="true" />
-                <element signature="e#217#218#0" expanded="true" />
+                <element signature="e#221#222#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -814,7 +815,7 @@
       <workItem from="1513676982959" duration="94000" />
       <workItem from="1514271791761" duration="1455000" />
       <workItem from="1520817693933" duration="23693000" />
-      <workItem from="1524473495122" duration="2103000" />
+      <workItem from="1524473495122" duration="2154000" />
     </task>
     <task id="LOCAL-00001" summary="测试">
       <created>1524475687468</created>
@@ -830,11 +831,18 @@
       <option name="project" value="LOCAL" />
       <updated>1524475798194</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="测试">
+      <created>1524475826485</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1524475826485</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62425000" />
+    <option name="totallyTimeSpent" value="62476000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
@@ -1310,11 +1318,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/test/CircleTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+        <state relative-caret-position="171">
+          <caret line="9" column="35" lean-forward="false" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
           <folding>
             <element signature="e#176#177#0" expanded="true" />
-            <element signature="e#217#218#0" expanded="true" />
+            <element signature="e#221#222#0" expanded="true" />
           </folding>
         </state>
       </provider>
