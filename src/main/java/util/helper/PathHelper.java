@@ -1,9 +1,7 @@
 
 package util.helper;
 
-import org.springframework.stereotype.Service;
 
-@Service("pathHelper")
 public class PathHelper {
 
 	

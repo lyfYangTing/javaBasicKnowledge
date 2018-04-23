@@ -1,14 +1,12 @@
 package util.http.exception;
 
-import com.infofuse.extend.exception.FunctionException;
-
 /**
  * http client异常
  *
  * @author luffy
  * @date 15/6/3
  */
-public class HttpClientException extends FunctionException {
+public class HttpClientException extends RuntimeException {
 
     public HttpClientException() {
         super();

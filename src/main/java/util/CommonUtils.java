@@ -180,16 +180,6 @@ public class CommonUtils {
     }
 
 
-    /**
-     * 获取MD5加密后的用户密码
-     *
-     * @param password
-     * @return
-     */
-    public static String getUserPasswordWithMD5(String password) {
-        return MD5Helper.MD5Encode("Infofuse" + password + "WeiMsg");
-    }
-
     public static Boolean isEmpty(Object obj) {
         if (obj == null)
             return true;
@@ -234,26 +224,7 @@ public class CommonUtils {
 
 
 
-    /**
-     * 随机生成手机验证码
-     *
-     * @return
-     */
-    public static String generateValidateCode(int length) {
-        int[] array = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-        Random random = new Random();
-        for (int i = 10; i > 1; i--) {
-            int index = random.nextInt(i);
-            int tmp = array[index];
-            array[index] = array[i - 1];
-            array[i - 1] = tmp;
-        }
-        StringBuffer sb = new StringBuffer();
-        for (int i = 0; i < length; i++) {
-            sb.append(array[i]);
-        }
-        return sb.toString();
-    }
+
 
     /**
      * 字符串格式化，取消空格和换行
@@ -283,26 +254,7 @@ public class CommonUtils {
         return temps;
     }
 
-    /**
-     * 随机生成六位数字手机验证码
-     *
-     * @return
-     */
-    public static String generate6ValidateCode() {
-        int[] array = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-        Random random = new Random();
-        for (int i = 10; i > 1; i--) {
-            int index = random.nextInt(i);
-            int tmp = array[index];
-            array[index] = array[i - 1];
-            array[i - 1] = tmp;
-        }
-        StringBuffer sb = new StringBuffer();
-        for (int i = 0; i < 6; i++) {
-            sb.append(array[i]);
-        }
-        return sb.toString();
-    }
+
 
     /**
      * 转换xml
@@ -548,8 +500,8 @@ public class CommonUtils {
 
     public static void main(String[] args){
         //String randString = CommonUtils.getFixLengthString(19);
-        String psw = CommonUtils.getUserPasswordWithMD5("123456");
-        System.out.println("加密后密码:"+psw);
+//        String psw = CommonUtils.getUserPasswordWithMD5("123456");
+//        System.out.println("加密后密码:"+psw);
     }
 
 

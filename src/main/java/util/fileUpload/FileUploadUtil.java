@@ -2,6 +2,8 @@ package util.fileUpload;
 
 
 import util.CommonUtils;
+import util.FileUtil;
+import util.ImageUtil;
 
 import java.io.File;
 import java.io.InputStream;
@@ -26,10 +28,10 @@ public class FileUploadUtil {
      */
     public static UploadedFile saveImageAndZoom(File originalImage, String path,
                                                 Integer width, Integer height) throws Exception {
-        String fileName = CommonUtils.getCharAndNumr(11) + ".JPG";
+        String fileName = FileUtil.getCharAndNumr(11) + ".JPG";
         String zoomFileName = "zoom_" + fileName;
-        CommonUtils.saveFileFromFile(originalImage, path, fileName);
-        CommonUtils.zoomOutImage(originalImage, new File(path + File.separator + zoomFileName), width, height);
+        FileUtil.saveFileFromFile(originalImage, path, fileName);
+        ImageUtil.zoomOutImage(originalImage, new File(path + File.separator + zoomFileName), width, height);
         UploadedFile uploadedFile = new UploadedFile();
         uploadedFile.setOriginalFile(fileName);
         uploadedFile.setZoomFile(zoomFileName);
@@ -46,7 +48,7 @@ public class FileUploadUtil {
      */
     public static UploadedFile saveImage(File originalImage, String path) throws Exception {
         String fileName = UUID.randomUUID().toString() + ".JPG";
-        CommonUtils.saveFileFromFile(originalImage, path, fileName);
+        FileUtil.saveFileFromFile(originalImage, path, fileName);
         UploadedFile uploadedFile = new UploadedFile();
         uploadedFile.setOriginalFile(fileName);
         return uploadedFile;
@@ -65,7 +67,7 @@ public class FileUploadUtil {
         try {
             String filePath = path + fileName;
             File outputFile = new File(filePath);
-            CommonUtils.saveFileFromInputStream(inputStream, outputFile);
+            FileUtil.saveFileFromInputStream(inputStream, outputFile);
             return fileName;
         } catch (Exception e) {
             throw new Exception(e);
@@ -91,7 +93,7 @@ public class FileUploadUtil {
             }
             String cameraPhoto = base64;
             cameraPhoto = CommonUtils.DelFormat(cameraPhoto);  //消除换行和空格
-            CommonUtils.GenerateImage(cameraPhoto, filePath);
+            ImageUtil.saveStrToFile(cameraPhoto, filePath);
             return fileName;
         } catch (Exception e) {
             throw new Exception(e);

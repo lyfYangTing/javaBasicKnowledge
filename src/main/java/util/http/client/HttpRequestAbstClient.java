@@ -1,10 +1,8 @@
 package util.http.client;
 
-import com.infofuse.cache.CacheManager;
-import com.infofuse.util.http.exception.HttpClientException;
-import com.infofuse.webServices.common.WSConfigure;
+
 import net.sf.json.JSONObject;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -22,14 +20,17 @@ import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+import util.http.exception.HttpClientException;
 
-import javax.annotation.Resource;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.charset.Charset;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 /**
  * http请求客户端
@@ -48,8 +49,8 @@ public abstract class HttpRequestAbstClient {
     static int MAX_PER_ROUTE = 20;        //每个主机的最大并行链接数
     static int MAX_TOTAL = 100;           //客户端总并行链接最大数
     static String DEFAULT_CHARSET = "UTF-8";
-    @Resource
-    private CacheManager cacheManager;
+//    @Resource
+//    private CacheManager cacheManager;
 
     /**
      * 获取http client
@@ -91,12 +92,12 @@ public abstract class HttpRequestAbstClient {
      * @return
      * @throws Exception
      */
-    public String doGetWithSign(String url, Map<String, Object> params) throws HttpClientException {
-        params.put("appId", WSConfigure.APPID);
-        params.put("signature", WSConfigure.SIGN);
-        params.put("timestamp", new Date());
-        return doGet(url,params);
-    }
+//    public String doGetWithSign(String url, Map<String, Object> params) throws HttpClientException {
+//        params.put("appId", WSConfigure.APPID);
+//        params.put("signature", WSConfigure.SIGN);
+//        params.put("timestamp", new Date());
+//        return doGet(url,params);
+//    }
 
     /**
      * GET请求，获取二进制数据
@@ -196,15 +197,15 @@ public abstract class HttpRequestAbstClient {
      * @return
      * @throws Exception
      */
-    public String doPostWithSign(String url, ContentType contentType, com.alibaba.fastjson.JSONObject params) throws HttpClientException {
-
-        params.put("appId", WSConfigure.APPID);
-        params.put("signature", WSConfigure.SIGN);
-        params.put("timestamp", new Date());
-
-        String responseStr = doPost(url, contentType, params.toString());
-        return responseStr;
-    }
+//    public String doPostWithSign(String url, ContentType contentType, com.alibaba.fastjson.JSONObject params) throws HttpClientException {
+//
+//        params.put("appId", WSConfigure.APPID);
+//        params.put("signature", WSConfigure.SIGN);
+//        params.put("timestamp", new Date());
+//
+//        String responseStr = doPost(url, contentType, params.toString());
+//        return responseStr;
+//    }
 
     /**
      * 上传文件
