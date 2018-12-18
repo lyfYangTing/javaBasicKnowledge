@@ -1,4 +1,4 @@
-package redisTest;
+package redisTest.fakeWebRetailer;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.Transaction;
@@ -8,6 +8,7 @@ import java.util.Set;
 
 /**
  * Created by 18435 on 2018/6/27.
+ * 更新登录会话
  */
 public class CleanSessionsThread extends Thread{
     private Jedis conn;
@@ -16,7 +17,6 @@ public class CleanSessionsThread extends Thread{
 
     public CleanSessionsThread(int limit) {
         this.conn = new Jedis("localhost");
-        this.conn.auth("123456");
         this.conn.select(15);
         this.limit = limit;
     }
@@ -26,7 +26,6 @@ public class CleanSessionsThread extends Thread{
     }
 
     public void run(){
-        int limit = 1000;  //会话数限制在1000以内
         while (!quit) {
             long countCookie = conn.zcard("recent:");
             if (countCookie <= limit) {//不要清除  休眠1分钟

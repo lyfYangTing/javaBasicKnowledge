@@ -1,3 +1,5 @@
+package redisTest.contact;
+
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.Pipeline;
 import test.JedisPoolUntil;
@@ -17,10 +19,10 @@ public class RedisLockTest {
      * @param acquireTimeout  如果程序在获取锁的时候失败，会不断进行尝试
      * @return
      */
-    public String acquireLock(String lockName , int acquireTimeout){
+    public static String acquireLock(String lockName , int acquireTimeout){
         String identifier = UUID.randomUUID().toString();//用这个值来防止
         Jedis jedis = JedisPoolUntil.getJedisPoolInstance().getResource();
-        long endTime = System.currentTimeMillis() + acquireTimeout;
+        long endTime = System.currentTimeMillis() + acquireTimeout * 1000;
         while(System.currentTimeMillis()<endTime){
             String result = jedis.set("lock:"+lockName,identifier,"NX");
             //函数 设置成功返回OK,失败返回null
@@ -28,12 +30,12 @@ public class RedisLockTest {
                 return identifier;
             }
             try {
-                Thread.sleep(1); //休眠1毫秒
+                Thread.sleep(1000); //休眠1秒
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-        return "";
+        return null;
     }
 
     /**
@@ -42,7 +44,7 @@ public class RedisLockTest {
      * @param identifier
      * @return
      */
-    public boolean releaseLock(String name,String identifier){
+    public static boolean releaseLock(String name,String identifier){
         Jedis jedis = JedisPoolUntil.getJedisPoolInstance().getResource();
         Pipeline pipeline = jedis.pipelined();
         String lockName = "lock:"+ name;
@@ -82,7 +84,7 @@ public class RedisLockTest {
         Jedis jedis = JedisPoolUntil.getJedisPoolInstance().getResource();
         long endTime = System.currentTimeMillis() + acquireTimeout;
         while(System.currentTimeMillis()<endTime){
-            String result = jedis.set("lock:"+name,identifier,"NX","EX",50);
+            String result = jedis.set("lock:"+name,identifier,"NX","EX",lockTimeout);
             //函数 设置成功返回OK,失败返回null
             if("OK".equals(result)){
                 return identifier;

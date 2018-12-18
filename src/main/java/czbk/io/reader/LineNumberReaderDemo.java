@@ -1,4 +1,4 @@
-package czbk.io;
+package czbk.io.reader;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;

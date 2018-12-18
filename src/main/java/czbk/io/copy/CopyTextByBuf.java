@@ -1,4 +1,4 @@
-package czbk.io;
+package czbk.io.copy;
 
 import java.io.*;
 

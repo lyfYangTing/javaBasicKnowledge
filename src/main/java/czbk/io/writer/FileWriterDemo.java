@@ -1,4 +1,4 @@
-package czbk.io;
+package czbk.io.writer;
 
 import java.io.FileWriter;
 import java.io.IOException;

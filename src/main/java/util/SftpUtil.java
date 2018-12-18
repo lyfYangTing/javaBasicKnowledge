@@ -54,18 +54,15 @@ public class SftpUtil {
         } catch (Exception var4) {
             this.logger.error("SFTP连接时发生异常", var4);
         }
-
     }
 
     public void disconnect() {
         if (this.sftp != null && this.sftp.isConnected()) {
             this.sftp.disconnect();
         }
-
         if (this.sshSession != null && this.sshSession.isConnected()) {
             this.sshSession.disconnect();
         }
-
     }
 
 
@@ -118,72 +115,6 @@ public class SftpUtil {
 
         return false;
     }
-
-
-    /*public boolean batchDownLoadFileFileNameContain(String remotPath, String localPath, String contain, boolean del) {
-        try {
-            int count = 0;
-            Boolean flag = true;
-            this.connect();
-            Vector e = this.listFiles(remotPath);
-            if(e.size() > 0) {
-                Iterator it = e.iterator();
-
-                while(true) {
-                    while(true) {
-                        String filename ="";
-                        SftpATTRS attrs;
-                        do {
-                            if(!it.hasNext()) {
-                              return false;
-                            }
-                            ChannelSftp.LsEntry entry = (ChannelSftp.LsEntry)it.next();
-                            filename = entry.getFilename();
-                            attrs = entry.getAttrs();
-                        } while(attrs.isDir());
-
-                        if(contain != null && !"".equals(contain.trim())) {
-                            if(filename.contains(contain)){
-                                if(this.downloadFile(remotPath, filename, localPath, filename)){
-                                    count ++;
-                                    if(del){
-                                        this.deleteSFTP(remotPath, filename);
-                                    }
-                                } else {
-                                    logger.error("下载文件"+ filename +"失败!");
-                                    flag = false;
-                                }
-                            }
-
-                        } else if(this.downloadFile(remotPath, filename, localPath, filename) ) {
-                            count ++;
-                            if(del){
-                                this.deleteSFTP(remotPath, filename);
-                            }
-                        }else {
-                            logger.error("下载文件"+ filename +"失败!");
-                            flag = false;
-                        }
-                    }
-                }
-            }
-
-            if( flag && count >0){
-                return true;
-            }else {
-                return false;
-            }
-
-        } catch (SftpException var13) {
-            var13.printStackTrace();
-        } finally {
-            this.disconnect();
-        }
-
-        return false;
-    }
-*/
-
 
     public boolean batchDownLoadFileFileNameContain(String remotPath, String localPath, String contain, boolean del) {
         try {
@@ -469,7 +400,6 @@ public class SftpUtil {
         if (!f.exists()) {
             f.mkdirs();
         }
-
     }
 
     public Vector listFiles(String directory) throws SftpException {
@@ -521,11 +451,25 @@ public class SftpUtil {
     }
 
     private static void diaoyong() {
-        SftpUtil ftp = new SftpUtil("192.168.201.40", "sftp_root", "sftp_root123", 26);
-        String localPath = "C:\\";
-        String remotePath = "/billfiles/22315875/";
+        SftpUtil ftp = new SftpUtil("202.106.235.34", "t1park", "t1park", 10024);
+        String localPath = "F:\\check\\";
+        String remotePath = "/CHECK";
         ftp.connect();
-        ftp.downloadFile(remotePath, "recon.txt", localPath, "test222.txt");
+//        InputStream is = ftp.downloadFileToStream(remotePath,"999110101020024_20181102_VehplatePay.txt");
+//        String data = "";
+//        try {
+//            byte[] getData = readInputStream(is);
+//            data = new String(getData,"GBK");
+//
+//            FileWriter fw = new FileWriter(localPath+"999110101020024_20181102_VehplatePay.txt");
+//            fw.write(data);
+//            fw.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
+        //ftp.batchDownLoadFileFileNameContain(remotePath,localPath,"VehplatePay",false);
+        ftp.downloadFile(remotePath, "999110101020024_20181102_VehplatePay.txt", localPath, "999110101020024_20181102_VehplatePay.txt");
         ftp.disconnect();
         System.exit(0);
     }
@@ -541,6 +485,23 @@ public class SftpUtil {
         }
 
         return in;
+    }
+
+    /**
+     * 从输入流中获取字节数组
+     * @param inputStream
+     * @return
+     * @throws IOException
+     */
+    public static  byte[] readInputStream(InputStream inputStream) throws IOException {
+        byte[] buffer = new byte[1024];
+        int len = 0;
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        while((len = inputStream.read(buffer)) != -1) {
+            bos.write(buffer, 0, len);
+        }
+        bos.close();
+        return bos.toByteArray();
     }
 
     public boolean uploadFile(String localPath, InputStream in) {
@@ -567,9 +528,7 @@ public class SftpUtil {
                     var17.printStackTrace();
                 }
             }
-
         }
-
         return false;
     }
 }
